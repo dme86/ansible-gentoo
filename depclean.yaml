@@ -1,0 +1,9 @@
+- hosts: gentoo
+  gather_facts: true
+
+  tasks:
+
+  - name: depclean
+    community.general.portage:
+      depclean: yes
+    become: yes

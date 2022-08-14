@@ -1,0 +1,12 @@
+- hosts: gentoo
+  gather_facts: true
+
+  tasks:
+
+  - name: update
+    community.general.portage:
+      package: '@world'
+      update: yes
+      deep: yes
+      sync: no
+    become: yes

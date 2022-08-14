@@ -1,0 +1,27 @@
+- hosts: gentoo
+  gather_facts: true
+
+  tasks:
+
+  - name: Install default software
+    community.general.portage:
+      package: 
+        - app-admin/eclean-kernel
+        - app-admin/sudo
+        - app-containers/docker
+        - app-editors/neovim
+        - app-misc/jq
+        - app-misc/neofetch
+        - app-misc/screen
+        - app-portage/eix
+        - app-portage/genlop
+        - app-portage/gentoolkit
+        - app-portage/repoman
+        - app-shells/fish
+        - app-text/tree
+        - dev-python/pip
+        - dev-vcs/git
+        - net-dns/bind-tools
+        - sys-process/htop
+      state: present
+    become: yes
