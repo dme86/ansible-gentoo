@@ -1,3 +1,5 @@
+![enter image description here](https://www.gentoo.org/assets/img/logo/gentoo-horizontal.png)
+
 # ansible-gentoo
 
 I'm using [Ansible's Gentoo modules](https://docs.ansible.com/ansible/latest/collections/community/general/portage_module.html) to deploy some of my Gentoo servers.
