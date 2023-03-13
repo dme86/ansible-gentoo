@@ -1,0 +1,22 @@
+# in development
+---
+- name: Run genlop command for multiple packages and capture output
+  hosts: gentoo
+  gather_facts: false
+
+  vars_prompt:
+  - name: package_names
+    prompt: "Enter package names (separated by commas):"
+    private: no
+
+  tasks:
+    - name: Run genlop command for each package
+      shell: "genlop -t {{ item }}"
+      register: genlop_output
+      loop: "{{ package_names.split(',') | default([package_names]) }}"
+
+    - name: Display genlop output for each package
+      debug:
+        var: item.stdout_lines
+      loop: "{{ genlop_output.results }}"
+
