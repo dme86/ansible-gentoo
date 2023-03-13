@@ -1,12 +1,16 @@
 - hosts: gentoo
   gather_facts: true
+  become: yes
+
+  vars:
+    sync: yes
+    deep: yes
 
   tasks:
 
-  - name: update
+  - name: update @world set
     community.general.portage:
       package: '@world'
       update: yes
-      deep: yes
-      sync: no
-    become: yes
+      deep: "{{ deep }}"
+      sync: "{{ sync }}"
