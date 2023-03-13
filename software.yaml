@@ -1,27 +1,28 @@
 - hosts: gentoo
-  gather_facts: true
+  gather_facts: false
+  become: true
 
-  tasks:
-
-  - name: Install default software
-    community.general.portage:
-      package: 
+  vars:
+    packages:
         - app-admin/eclean-kernel
         - app-admin/sudo
-        - app-containers/docker
         - app-editors/neovim
-        - app-misc/jq
-        - app-misc/neofetch
         - app-misc/screen
         - app-portage/eix
         - app-portage/genlop
-        - app-portage/gentoolkit
-        - app-portage/repoman
+        - app-portage/gentoolkit # needed!!
         - app-shells/fish
         - app-text/tree
-        - dev-python/pip
         - dev-vcs/git
         - net-dns/bind-tools
         - sys-process/htop
-      state: present
-    become: yes
+        # Add more packages here or pass them as parameters
+        # e.g
+        # ansible-playbook software.yml --extra-vars "packages=['app-containers/docker', 'app-misc/neofetch']"
+
+  tasks:
+    - name: Install software using portage
+      community.general.portage:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
