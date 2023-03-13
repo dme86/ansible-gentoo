@@ -1,4 +1,4 @@
-# gentoo-ansible
+# ansible-gentoo
 
 I'm using [Ansible's Gentoo modules](https://docs.ansible.com/ansible/latest/collections/community/general/portage_module.html) to deploy some of my machines.
 
